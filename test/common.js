@@ -1,34 +1,34 @@
-function u1(url) {
+export function u1(url) {
   return "code\n/*# sourceMappingURL=" + url + " */"
 }
 
-function u2(url) {
+export function u2(url) {
   return "code\n//# sourceMappingURL=" + url
 }
 
-function u3(url) {
+export function u3(url) {
   return "code\n/*\n# sourceMappingURL=" + url + "\n*/"
 }
 
-function u4(url) {
+export function u4(url) {
   return "code\n/*\n//# sourceMappingURL=" + url + "\n*/"
 }
 
-function read(x) {
+export function read(x) {
   return function() {
     return x
   }
 }
 
-function Throws(x) {
+export function Throws(x) {
   throw new Error(x)
 }
 
-function identity(x) {
+export function identity(x) {
   return x
 }
 
-function asyncify(syncFn) {
+export function asyncify(syncFn) {
   return function() {
     var args = Array.prototype.slice.call(arguments)
     var callback = args.pop()
@@ -44,13 +44,11 @@ function asyncify(syncFn) {
   }
 }
 
-module.exports = {
-  u1:       u1,
-  u2:       u2,
-  u3:       u3,
-  u4:       u4,
-  read:     read,
-  Throws:   Throws,
-  identity: identity,
-  asyncify: asyncify
-}
+// export const u1 = u1
+// export const u2 = u2
+// export const u3 = u3
+// export const u4 = u4
+// export const read = read
+// export const Throws = Throws
+// export const identity = identity
+// export const asyncify = asyncify

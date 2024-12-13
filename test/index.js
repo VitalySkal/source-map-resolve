@@ -1,15 +1,23 @@
-var test         = require("tape")
-var common       = require("./common")
-var u1           = common.u1
-var u2           = common.u2
-var u3           = common.u3
-var u4           = common.u4
-var read         = common.read
-var Throws       = common.Throws
-var identity     = common.identity
-var asyncify     = common.asyncify
+// var test         import("tape")
+// import * as test from 'tape';
+// var common       = import("./common")
+import test from 'tape';
+import {u1, u2, u3, u4, read, Throws, identity, asyncify} from './common.js';
 
-var sourceMapResolve = require("../")
+// var u1           = common.u1
+// var u2           = common.u2
+// var u3           = common.u3
+// var u4           = common.u4
+// var read         = common.read
+// var Throws       = common.Throws
+// var identity     = common.identity
+// var asyncify     = common.asyncify
+
+// var sourceMapResolve = import("../")
+
+//import * as sourceMapResolve from '../index.js';
+
+import * as sourceMapResolve from '../index.js'
 
 "use strict"
 

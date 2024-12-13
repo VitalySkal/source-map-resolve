@@ -1,5 +1,6 @@
 {
   "name": "source-map-resolve",
+  "type": "module",
   "version": "0.6.0",
   "author": "Simon Lydell",
   "license": "MIT",
@@ -28,7 +29,7 @@
   },
   "dependencies": {
     "atob": "^2.1.2",
-    "decode-uri-component": "^0.2.0"
+    "decode-uri-component": "0.4.1"
   },
   "devDependencies": {
     "jshint": "2.10.3",

@@ -1,9 +1,11 @@
-var atob = require("atob")
-var urlLib = require("url")
-var pathLib = require("path")
-var decodeUriComponentLib = require("decode-uri-component")
-
-
+// var atob = require("atob")
+import atob  from 'atob';
+// var urlLib = require("url")
+import * as urlLib from 'url';
+//var pathLib = require("path")
+import * as pathLib from 'path';
+// var decodeUriComponentLib = require("decode-uri-component")
+import decodeUriComponentLib from 'decode-uri-component';
 
 function resolveUrl(/* ...urls */) {
   return Array.prototype.reduce.call(arguments, function(resolved, nextUrl) {
@@ -24,7 +26,7 @@ function callbackAsync(callback, error, result) {
   setImmediate(function() { callback(error, result) })
 }
 
-function parseMapToJSON(string, data) {
+export function parseMapToJSON(string, data) {
   try {
     return JSON.parse(string.replace(/^\)\]\}'/, ""))
   } catch (error) {
@@ -67,7 +69,7 @@ function getSourceMappingUrl(code) {
 
 
 
-function resolveSourceMap(code, codeUrl, read, callback) {
+export function resolveSourceMap(code, codeUrl, read, callback) {
   var mapData
   try {
     mapData = resolveSourceMapHelper(code, codeUrl)
@@ -93,7 +95,7 @@ function resolveSourceMap(code, codeUrl, read, callback) {
   })
 }
 
-function resolveSourceMapSync(code, codeUrl, read) {
+export function resolveSourceMapSync(code, codeUrl, read) {
   var mapData = resolveSourceMapHelper(code, codeUrl)
   if (!mapData || mapData.map) {
     return mapData
@@ -122,7 +124,7 @@ var jsonMimeTypeRegex = /^(?:application|text)\/json$/
  */
 var jsonCharacterEncoding = "utf-8"
 
-function base64ToBuf(b64) {
+export function base64ToBuf(b64) {
   var binStr = atob(b64)
   var len = binStr.length
   var arr = new Uint8Array(len)
@@ -132,7 +134,7 @@ function base64ToBuf(b64) {
   return arr
 }
 
-function decodeBase64String(b64) {
+export function decodeBase64String(b64) {
   if (typeof TextDecoder === "undefined" || typeof Uint8Array === "undefined") {
     return atob(b64)
   }
@@ -143,7 +145,7 @@ function decodeBase64String(b64) {
   return decoder.decode(buf);
 }
 
-function resolveSourceMapHelper(code, codeUrl) {
+export function resolveSourceMapHelper(code, codeUrl) {
   codeUrl = convertWindowsPath(codeUrl)
 
   var url = getSourceMappingUrl(code)
@@ -190,7 +192,7 @@ function resolveSourceMapHelper(code, codeUrl) {
 
 
 
-function resolveSources(map, mapUrl, read, options, callback) {
+export function resolveSources(map, mapUrl, read, options, callback) {
   if (typeof options === "function") {
     callback = options
     options = {}
@@ -228,7 +230,7 @@ function resolveSources(map, mapUrl, read, options, callback) {
   })
 }
 
-function resolveSourcesSync(map, mapUrl, read, options) {
+export function resolveSourcesSync(map, mapUrl, read, options) {
   var result = {
     sourcesResolved: [],
     sourcesContent:  []
@@ -259,7 +261,7 @@ function resolveSourcesSync(map, mapUrl, read, options) {
 
 var endingSlash = /\/?$/
 
-function resolveSourcesHelper(map, mapUrl, options, fn) {
+export function resolveSourcesHelper(map, mapUrl, options, fn) {
   options = options || {}
   mapUrl = convertWindowsPath(mapUrl)
   var fullUrl
@@ -289,7 +291,7 @@ function resolveSourcesHelper(map, mapUrl, options, fn) {
 
 
 
-function resolve(code, codeUrl, read, options, callback) {
+export function resolve(code, codeUrl, read, options, callback) {
   if (typeof options === "function") {
     callback = options
     options = {}
@@ -328,7 +330,7 @@ function resolve(code, codeUrl, read, options, callback) {
     })
   }
 
-  function _resolveSources(mapData) {
+   function _resolveSources(mapData) {
     resolveSources(mapData.map, mapData.sourcesRelativeTo, read, options, function(error, result) {
       if (error) {
         return callback(error)
@@ -340,7 +342,7 @@ function resolve(code, codeUrl, read, options, callback) {
   }
 }
 
-function resolveSync(code, codeUrl, read, options) {
+export function resolveSync(code, codeUrl, read, options) {
   var mapData
   if (code === null) {
     var mapUrl = codeUrl
@@ -366,12 +368,12 @@ function resolveSync(code, codeUrl, read, options) {
 
 
 
-module.exports = {
-  resolveSourceMap:     resolveSourceMap,
-  resolveSourceMapSync: resolveSourceMapSync,
-  resolveSources:       resolveSources,
-  resolveSourcesSync:   resolveSourcesSync,
-  resolve:              resolve,
-  resolveSync:          resolveSync,
-  parseMapToJSON:       parseMapToJSON
-}
+// module.exports = {
+//   resolveSourceMap:     resolveSourceMap,
+//   resolveSourceMapSync: resolveSourceMapSync,
+//   resolveSources:       resolveSources,
+//   resolveSourcesSync:   resolveSourcesSync,
+//   resolve:              resolve,
+//   resolveSync:          resolveSync,
+//   parseMapToJSON:       parseMapToJSON
+// }

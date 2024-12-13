@@ -1,9 +1,7 @@
-var test         = require("tape")
-var common       = require("./common")
-var u1           = common.u1
-var asyncify     = common.asyncify
+import {test} from 'tape';
+import {u1, asyncify} from './common.js';
 
-var sourceMapResolve = require("../")
+import * as sourceMapResolve from '../index.js';
 
 var mapUrl = "operators%20map.json"
 var codeUrl = "./built files/operators:+-<>%25.js"

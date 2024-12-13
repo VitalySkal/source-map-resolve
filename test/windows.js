@@ -1,16 +1,10 @@
-var path         = require("path")
-var test         = require("tape")
-var common       = require("./common")
-var u1           = common.u1
-var u2           = common.u2
-var u3           = common.u3
-var read         = common.read
-var identity     = common.identity
-var asyncify     = common.asyncify
+// import * as path from "path";
+import {test} from  "tape";
+import {u1, u2, u3, read, identity, asyncify} from "./common.js";
 
-var sourceMapResolve = require("../")
+import * as sourceMapResolve from "../index.js";
 
-path.sep = "\\"
+// path.sep = "\\"
 
 
 function testResolveSourceMap(method, sync) {
